@@ -40,6 +40,10 @@ export default function Edit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps( {
 		className: `mah-asides--${ attributes.type }`,
 	} );
+	const options = types.map( ( type ) => ( {
+			label: type.charAt( 0 ).toUpperCase() + type.slice( 1 ),
+			value: type
+	} ) );
 
 	return (
 		<>
@@ -48,23 +52,25 @@ export default function Edit( { attributes, setAttributes } ) {
 					<SelectControl
 						label={ __( 'Type', 'mah-asides' ) }
 						value={ attributes.type }
-						options={
-							types.map( ( type ) => ( {
-								label: type.charAt( 0 ).toUpperCase() + type.slice( 1 ),
-								value: type
-						} ) ) }
+						options={ options}
 						onChange={ ( type ) => setAttributes( { type } ) }
 					/>
                 </PanelBody>
 			</InspectorControls>
 
-			<RichText
-				tagName="p"
-				placeholder={ __( 'Mah Asides – hello from the editor!', 'mah-asides' ) }
-				value={ attributes.content }
-				onChange={ ( content ) => setAttributes( { content } ) }
-				{ ...blockProps }
-			/>
+			<aside { ...blockProps }>
+				<div className="mah-asides__title">
+					{ options.find( ( option ) => option.value === attributes.type ).label }
+				</div>
+
+				<RichText
+					tagName="p"
+					placeholder={ __( 'Content', 'mah-asides' ) }
+					value={ attributes.content }
+					onChange={ ( content ) => setAttributes( { content } ) }
+					{ ...blockProps }
+				/>
+			</aside>
 		</>
 	);
 }
