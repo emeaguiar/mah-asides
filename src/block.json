@@ -11,6 +11,15 @@
 		"html": false,
 		"align": [ "wide" ]
 	},
+	"attributes": {
+		"type": {
+			"type": "string",
+			"enum": [ "note", "tip", "warning" ]
+		},
+		"content": {
+			"type": "string"
+		}
+	},
 	"textdomain": "mah-asides",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
