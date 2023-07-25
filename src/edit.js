@@ -38,7 +38,7 @@ import metadata from './block.json';
 export default function Edit( { attributes, setAttributes } ) {
 	const types = metadata.attributes.type.enum;
 	const blockProps = useBlockProps( {
-		className: `mah-asides--${ attributes.type }`,
+		className: `mah-asides mah-asides--${ attributes.type }`,
 	} );
 	const options = types.map( ( type ) => ( {
 			label: type.charAt( 0 ).toUpperCase() + type.slice( 1 ),
@@ -59,9 +59,9 @@ export default function Edit( { attributes, setAttributes } ) {
 			</InspectorControls>
 
 			<aside { ...blockProps }>
-				<div className="mah-asides__title">
+				<h3 className="mah-asides__title">
 					{ options.find( ( option ) => option.value === attributes.type ).label }
-				</div>
+				</h3>
 
 				<RichText
 					tagName="p"
