@@ -4,6 +4,7 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+@use "sass:color";
 @import "variables";
 
 .mah-asides {
@@ -16,7 +17,7 @@
 @each $label,$color in $colors {
 	.mah-asides--#{$label} {
 		--color--aside: #{$color};
-		--color--aside--background: #{lighten($color, 27%)};
+		--color--aside--background: #{color.scale($color, $alpha: -96%)};
 	}
 }
 

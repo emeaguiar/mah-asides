@@ -64,11 +64,11 @@ export default function Edit( { attributes, setAttributes } ) {
 				</h3>
 
 				<RichText
+					className="mah-asides__content"
 					tagName="p"
 					placeholder={ __( 'Content', 'mah-asides' ) }
 					value={ attributes.content }
 					onChange={ ( content ) => setAttributes( { content } ) }
-					{ ...blockProps }
 				/>
 			</aside>
 		</>
