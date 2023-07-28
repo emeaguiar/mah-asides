@@ -4,9 +4,20 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+@import "variables";
 
 .mah-asides {
+	background-color: var(--color--aside--background);
+	border-inline-start: 5px solid;
 	border-radius: 8px;
+	color: var(--color--aside);
+}
+
+@each $label,$color in $colors {
+	.mah-asides--#{$label} {
+		--color--aside: #{$color};
+		--color--aside--background: #{lighten($color, 27%)};
+	}
 }
 
 .mah-asides__title {

@@ -15,7 +15,7 @@
 		"type": {
 			"type": "string",
 			"default": "note",
-			"enum": [ "note", "tip", "warning" ]
+			"enum": [ "notice", "success", "warning", "error" ]
 		},
 		"content": {
 			"type": "string"
