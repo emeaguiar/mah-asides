@@ -14,7 +14,7 @@
 	"attributes": {
 		"type": {
 			"type": "string",
-			"default": "note",
+			"default": "notice",
 			"enum": [ "notice", "success", "warning", "error" ]
 		},
 		"content": {
