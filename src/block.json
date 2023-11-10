@@ -18,7 +18,14 @@
 			"enum": [ "notice", "success", "warning", "error" ]
 		},
 		"content": {
-			"type": "string"
+			"type": "string",
+			"source": "html",
+			"selector": ".mah-asides__content"
+		},
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": ".mah-asides__title"
 		}
 	},
 	"textdomain": "mah-asides",

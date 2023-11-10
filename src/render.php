@@ -13,9 +13,13 @@ $classes_wrapper = [
 <aside <?php echo get_block_wrapper_attributes( [
 	'class' => implode(' ', $classes_wrapper ),
 ] ); ?>>
-	<h3 className="mah-asides__title">
-		<?php echo esc_html( ucfirst( $attributes['type'] ) ); ?>
-	</h3>
+	<?php if ( ! empty( $attributes['title'] ) ) : ?>
+		<h3 class="mah-asides__title">
+			<?php echo esc_html( $attributes['title'] ); ?>
+		</h3>
+	<?php endif; ?>
 
-	<?php echo wp_kses_post( $attributes['content'] ); ?>
+	<?php if ( ! empty( $attributes['content'] ) ) : ?>
+		<?php echo wp_kses_post( $attributes['content'] ); ?>
+	<?php endif; ?>
 </aside>

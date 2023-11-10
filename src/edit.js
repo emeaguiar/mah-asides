@@ -59,9 +59,13 @@ export default function Edit( { attributes, setAttributes } ) {
 			</InspectorControls>
 
 			<aside { ...blockProps }>
-				<h3 className="mah-asides__title">
-					{ options.find( ( option ) => option.value === attributes.type ).label }
-				</h3>
+				<RichText
+					className="mah-asides__title"
+					tagName="h3"
+					placeholder={ __( 'Title', 'mah-asides' ) }
+					value={ attributes.title }
+					onChange={ ( title ) => setAttributes( { title } ) }
+				/>
 
 				<RichText
 					className="mah-asides__content"
