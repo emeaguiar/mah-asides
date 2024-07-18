@@ -23,4 +23,5 @@
 function mah_asides_mah_asides_block_init() {
 	register_block_type( __DIR__ . '/build' );
 }
+
 add_action( 'init', 'mah_asides_mah_asides_block_init' );
