@@ -1,48 +1,36 @@
 /**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
+ * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { InspectorControls, RichText } from '@wordpress/block-editor';
 import {
-	PanelBody,
-	SelectControl,
-} from '@wordpress/components';
+	useBlockProps,
+	InspectorControls,
+	RichText,
+} from '@wordpress/block-editor';
+import { PanelBody, SelectControl } from '@wordpress/components';
 
 /**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-import { useBlockProps } from '@wordpress/block-editor';
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
+ * Internal dependencies
  */
 import './editor.scss';
 import metadata from './block.json';
 
 /**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
+ * Edit function
  *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {WPElement} Element to render.
+ * @param {Object}   props               Properties passed to the component
+ * @param {Object}   props.attributes    Attributes for the block
+ * @param {Function} props.setAttributes Function to set attributes
  */
-export default function Edit( { attributes, setAttributes } ) {
+export default function Edit( props ) {
+	const { attributes, setAttributes } = props;
 	const types = metadata.attributes.type.enum;
 	const blockProps = useBlockProps( {
 		className: `mah-asides mah-asides--${ attributes.type }`,
 	} );
 	const options = types.map( ( type ) => ( {
-			label: type.charAt( 0 ).toUpperCase() + type.slice( 1 ),
-			value: type
+		label: type.charAt( 0 ).toUpperCase() + type.slice( 1 ),
+		value: type,
 	} ) );
 
 	return (
@@ -52,10 +40,10 @@ export default function Edit( { attributes, setAttributes } ) {
 					<SelectControl
 						label={ __( 'Type', 'mah-asides' ) }
 						value={ attributes.type }
-						options={ options}
+						options={ options }
 						onChange={ ( type ) => setAttributes( { type } ) }
 					/>
-                </PanelBody>
+				</PanelBody>
 			</InspectorControls>
 
 			<aside { ...blockProps }>
